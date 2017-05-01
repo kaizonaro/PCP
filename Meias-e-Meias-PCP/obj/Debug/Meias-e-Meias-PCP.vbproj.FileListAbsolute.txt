@@ -1,0 +1,31 @@
+C:\Users\zonar\AppData\Local\Temporary Projects\Meias-e-Meias-PCP\bin\Debug\Meias-e-Meias-PCP.exe.config
+C:\Users\zonar\Documents\Visual Studio 2015\Projects\Meias-e-Meias-PCP\Meias-e-Meias-PCP\obj\Debug\InnerSocks.CLIENTE.resources
+C:\Users\zonar\Documents\Visual Studio 2015\Projects\Meias-e-Meias-PCP\Meias-e-Meias-PCP\obj\Debug\InnerSocks.CRIAR_USUARIO.resources
+C:\Users\zonar\Documents\Visual Studio 2015\Projects\Meias-e-Meias-PCP\Meias-e-Meias-PCP\obj\Debug\InnerSocks.DEMANDA.resources
+C:\Users\zonar\Documents\Visual Studio 2015\Projects\Meias-e-Meias-PCP\Meias-e-Meias-PCP\obj\Debug\InnerSocks.EditorHora.resources
+C:\Users\zonar\Documents\Visual Studio 2015\Projects\Meias-e-Meias-PCP\Meias-e-Meias-PCP\obj\Debug\InnerSocks.HOME.resources
+C:\Users\zonar\Documents\Visual Studio 2015\Projects\Meias-e-Meias-PCP\Meias-e-Meias-PCP\obj\Debug\InnerSocks.LOGIN.resources
+C:\Users\zonar\Documents\Visual Studio 2015\Projects\Meias-e-Meias-PCP\Meias-e-Meias-PCP\obj\Debug\InnerSocks.MAQUINA.resources
+C:\Users\zonar\Documents\Visual Studio 2015\Projects\Meias-e-Meias-PCP\Meias-e-Meias-PCP\obj\Debug\InnerSocks.MEIAS.resources
+C:\Users\zonar\Documents\Visual Studio 2015\Projects\Meias-e-Meias-PCP\Meias-e-Meias-PCP\obj\Debug\InnerSocks.Resources.resources
+C:\Users\zonar\Documents\Visual Studio 2015\Projects\Meias-e-Meias-PCP\Meias-e-Meias-PCP\obj\Debug\Meias-e-Meias-PCP.vbproj.GenerateResource.Cache
+C:\Users\zonar\Documents\Visual Studio 2015\Projects\Meias-e-Meias-PCP\Meias-e-Meias-PCP\bin\Debug\InnerSocks.exe.config
+C:\Users\zonar\Documents\Visual Studio 2015\Projects\Meias-e-Meias-PCP\Meias-e-Meias-PCP\bin\Debug\InnerSocks.exe.manifest
+C:\Users\zonar\Documents\Visual Studio 2015\Projects\Meias-e-Meias-PCP\Meias-e-Meias-PCP\bin\Debug\InnerSocks.application
+C:\Users\zonar\Documents\Visual Studio 2015\Projects\Meias-e-Meias-PCP\Meias-e-Meias-PCP\bin\Debug\InnerSocks.exe
+C:\Users\zonar\Documents\Visual Studio 2015\Projects\Meias-e-Meias-PCP\Meias-e-Meias-PCP\bin\Debug\InnerSocks.pdb
+C:\Users\zonar\Documents\Visual Studio 2015\Projects\Meias-e-Meias-PCP\Meias-e-Meias-PCP\bin\Debug\InnerSocks.xml
+C:\Users\zonar\Documents\Visual Studio 2015\Projects\Meias-e-Meias-PCP\Meias-e-Meias-PCP\bin\Debug\InnerLibs.dll
+C:\Users\zonar\Documents\Visual Studio 2015\Projects\Meias-e-Meias-PCP\Meias-e-Meias-PCP\bin\Debug\mysql.data.dll
+C:\Users\zonar\Documents\Visual Studio 2015\Projects\Meias-e-Meias-PCP\Meias-e-Meias-PCP\bin\Debug\InnerLibs.pdb
+C:\Users\zonar\Documents\Visual Studio 2015\Projects\Meias-e-Meias-PCP\Meias-e-Meias-PCP\bin\Debug\InnerLibs.xml
+C:\Users\zonar\Documents\Visual Studio 2015\Projects\Meias-e-Meias-PCP\Meias-e-Meias-PCP\obj\Debug\Meias-e-Meias-PCP.vbprojResolveAssemblyReference.cache
+C:\Users\zonar\Documents\Visual Studio 2015\Projects\Meias-e-Meias-PCP\Meias-e-Meias-PCP\obj\Debug\InnerSocks.exe.manifest
+C:\Users\zonar\Documents\Visual Studio 2015\Projects\Meias-e-Meias-PCP\Meias-e-Meias-PCP\obj\Debug\InnerSocks.application
+C:\Users\zonar\Documents\Visual Studio 2015\Projects\Meias-e-Meias-PCP\Meias-e-Meias-PCP\obj\Debug\InnerSocks.exe
+C:\Users\zonar\Documents\Visual Studio 2015\Projects\Meias-e-Meias-PCP\Meias-e-Meias-PCP\obj\Debug\InnerSocks.xml
+C:\Users\zonar\Documents\Visual Studio 2015\Projects\Meias-e-Meias-PCP\Meias-e-Meias-PCP\obj\Debug\InnerSocks.pdb
+C:\SVN\PCP\trunk\Meias-e-Meias-PCP\bin\Debug\InnerSocks.exe.config
+C:\SVN\PCP\trunk\Meias-e-Meias-PCP\obj\Debug\InnerSocks.exe
+C:\SVN\PCP\trunk\Meias-e-Meias-PCP\obj\Debug\InnerSocks.xml
+C:\SVN\PCP\trunk\Meias-e-Meias-PCP\obj\Debug\InnerSocks.pdb
