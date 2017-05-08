@@ -1,13 +1,13 @@
 ﻿Imports System.IO
 Imports InnerLibs
 Imports MySql.Data.MySqlClient
+Imports InnerLibs.TimeMachine
 
 Module Utils
-    Public HOME_FORM As Form = New HOME
     Public ConnectionString As String = ""
     Public dbpath As String = CurDir() & "\" & "db.cfg"
     Public USUARIO As New UsuarioClass
-
+    Public HOME_FORM As Form = New HOME
 
     Public Sub ValidateDatabase()
         Try
@@ -30,9 +30,9 @@ Module Utils
     End Sub
 
 
-    Public Function Banco() As DataBase(Of MySqlConnection)
+    Public Function Banco() As DataBase
         ValidateDatabase()
-        Return New DataBase(Of MySqlConnection)(ConnectionString)
+        Return DataBase.Create(Of MySqlConnection)(ConnectionString)
     End Function
 
 
@@ -47,7 +47,7 @@ Module Utils
 
         Dim ts As New TimeSpan(TempoAdd.Ticks)
         Dim datafinal = DataInicio.Add(ts).AddDays(1)
-        Dim relevante = New TimeMachine(DataInicio, datafinal, DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Wednesday, DayOfWeek.Thursday, DayOfWeek.Friday)
+        Dim relevante = New TimeFlow(DataInicio, datafinal, DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Wednesday, DayOfWeek.Thursday, DayOfWeek.Friday)
         datafinal = datafinal.AddDays(relevante.NonRelevantDays.Count) 'adiciona a contagem dos dias nao letivos
         datafinal = datafinal.AddHours((24 - 8) * relevante.RelevantDays.Count) 'adiciona horas fora da jornada de trabalho de cada dia letivo
         If datafinal.DayOfWeek = DayOfWeek.Sunday Then
@@ -64,19 +64,19 @@ Module Utils
 
 
     Function Malhas() As TextValueList(Of Integer)
-        Return Banco.RunSQL("SELECT * FROM Malha").ToTextValueList(Of Integer)("MAL_TITULO", "MAL_ID")
+        Return Banco("Malha").ToTextValueList(Of Integer)("MAL_TITULO", "MAL_ID")
     End Function
 
     Function Modelos() As TextValueList(Of Integer)
-        Return Banco.RunSQL("SELECT * FROM Modelo").ToTextValueList(Of Integer)("MOD_TITULO", "MOD_ID")
+        Return Banco("Modelo").ToTextValueList(Of Integer)("MOD_TITULO", "MOD_ID")
     End Function
 
     Function Maquinas() As TextValueList(Of Integer)
-        Return Banco.RunSQL("SELECT * FROM Maquina").ToTextValueList(Of Integer)("MAQ_TITULO", "MAQ_ID")
+        Return Banco("Maquina").ToTextValueList(Of Integer)("MAQ_TITULO", "MAQ_ID")
     End Function
 
     Function Clientes() As TextValueList(Of Integer)
-        Return Banco.RunSQL("SELECT * FROM Cliente").ToTextValueList(Of Integer)("CLI_NOME", "CLI_ID")
+        Return Banco("Cliente").ToTextValueList(Of Integer)("CLI_NOME", "CLI_ID")
     End Function
 
     Function Usuarios() As TextValueList(Of Integer)
@@ -84,7 +84,7 @@ Module Utils
     End Function
 
     Function CadastrarCliente(CLI_NOME As String) As Integer
-        Dim reader As MySqlDataReader = Banco.RunSQL("INSERT INTO Cliente (CLI_NOME) values (" & CLI_NOME.IsNull & "); SELECT LAST_INSERT_ID();")
+        Dim reader As DataBase.Reader = Banco.RunSQL("INSERT INTO Cliente (CLI_NOME) values (" & CLI_NOME.IsNull & "); SELECT LAST_INSERT_ID();")
         While reader.Read
             Return reader(0)
         End While
@@ -93,7 +93,7 @@ Module Utils
 
     Sub AjustarCronograma(DH_ENTRADA As DateTime, ID_MAQUINA As String, Tempo As TimeSpan, plus As Boolean)
         Dim cmd As String = "SELECT * From Demanda where MAQ_ID = " & ID_MAQUINA & " AND PCP_DH_ENTRADA >= STR_TO_DATE(" & DH_ENTRADA.ToSQLDateString.IsNull & ",'%Y-%m-%d %T')"
-        Dim maquinas As MySqlDataReader = Banco.RunSQL(cmd)
+        Dim maquinas As DataBase.Reader = Banco.RunSQL(cmd)
         While maquinas.Read
             DH_ENTRADA = maquinas("PCP_DH_ENTRADA").ToString.To(Of Date)
             Dim DH_SAIDA = maquinas("PCP_DH_SAIDA").ToString.To(Of Date)
@@ -109,7 +109,7 @@ Module Utils
 
 
     Sub ApagarDemanda(ID As String)
-        Dim reader As MySqlDataReader = Banco.RunSQL("SELECT * from Demanda  where PCP_ID =  " & ID.IsNull)
+        Dim reader As DataBase.Reader = Banco.RunSQL("SELECT * from Demanda  where PCP_ID =  " & ID.IsNull)
         While reader.Read
             Dim DH_ENTRADA = reader("PCP_DH_ENTRADA").ToString.To(Of Date)
             Dim DH_SAIDA = reader("PCP_DH_SAIDA").ToString.To(Of Date)
@@ -121,6 +121,41 @@ Module Utils
         Notify("Apagando demanda #" & ID)
     End Sub
 
+
+
+    Public Sub TrazGaleria(FlowLayoutPanel As FlowLayoutPanel)
+        FlowLayoutPanel.Controls.Clear()
+        Dim gal = Banco("Galeria")
+        While gal.Read
+            Dim f As New FOTO_GAL
+            f.GAL_ID.Text = gal("GAL_ID")
+            f.GAL_DESCRICAO.Text = gal("GAL_DESCRICAO").ToString
+            f.GAL_TITULO.Text = gal("GAL_TITULO").ToString
+            f.GAL_CATEGORIA.Text = gal("GAL_CATEGORIA").ToString
+            Try
+                f.GAL_FOTO.BackgroundImage = DirectCast(gal("GAL_FOTO"), Byte()).ToImage
+            Catch ex As Exception
+                f.GAL_FOTO.BackgroundImage = My.Resources.imagem_vazia
+            End Try
+            FlowLayoutPanel.Controls.Add(f)
+        End While
+        Dim bt As New Button()
+        bt.Text = "Adicionar nova Foto"
+        bt.Size = New Size(171, 317)
+        AddHandler bt.Click, AddressOf novafota
+        FlowLayoutPanel.Controls.Add(bt)
+    End Sub
+
+    Private Sub novafota(sender As Object, e As EventArgs)
+        Dim tipos = New FileTypeList(New FileType(".jpg"), New FileType(".png"), New FileType(".bmp"))
+        Dim d As New OpenFileDialog()
+        d.Filter = tipos.ToFilterString
+        d.Title = "Selecione uma foto para fazer o upload"
+        If d.ShowDialog = DialogResult.OK AndAlso Path.GetExtension(d.FileName).IsIn(tipos.Extensions) Then
+            Banco.RunSQL("INSERT INTO `Galeria` (GAL_FOTO) values (@foto)", "@foto", New FileInfo(d.FileName))
+            TrazGaleria(sender.Parent)
+        End If
+    End Sub
 End Module
 
 

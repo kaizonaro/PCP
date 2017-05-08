@@ -53,7 +53,7 @@ Public Class MEIAS
     Sub ApagarMalha()
         Dim item = LISTA_MALHA.GetSelectedItemPair(Of Integer)
         If Confirm("Deseja realmente apagar a malha " & item.Text.Quote & "?" & Environment.NewLine & "Esta ação também vai apagar todas as demandas que utilizam esta malha!") Then
-            Dim reader As MySqlDataReader = Banco.RunSQL("SELECT PCP_ID FROM Demanda where MAL_ID = " & item.Value.ToString.IsNull)
+            Dim reader As DataBase.Reader = Banco.RunSQL("SELECT PCP_ID FROM Demanda where MAL_ID = " & item.Value.ToString.IsNull)
             While reader.Read
                 ApagarDemanda(reader("PCP_ID"))
             End While
@@ -65,7 +65,7 @@ Public Class MEIAS
     Sub ApagarModelo()
         Dim item = LISTA_MODELO.GetSelectedItemPair(Of Integer)
         If Confirm("Deseja realmente apagar o modelo " & item.Text.Quote & "?" & Environment.NewLine & "Esta ação também vai apagar todas as demandas que utilizam este modelo!") Then
-            Dim reader As MySqlDataReader = Banco.RunSQL("SELECT PCP_ID FROM Demanda where MOD_ID = " & item.Value.ToString.IsNull)
+            Dim reader As DataBase.Reader = Banco.RunSQL("SELECT PCP_ID FROM Demanda where MOD_ID = " & item.Value.ToString.IsNull)
             While reader.Read
                 ApagarDemanda(reader("PCP_ID"))
             End While

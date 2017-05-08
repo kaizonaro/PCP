@@ -1,4 +1,5 @@
 ﻿Imports InnerLibs
+Imports InnerLibs.TimeMachine
 Public Class DEMANDA
     Dim FullLoaded = False
     Private Sub NumericUpDown1_ValueChanged(sender As Object, e As EventArgs) Handles PCP_QUANT_PE.ValueChanged, PCP_TEMPO_PE.ValueChanged, PCP_DH_ENTRADA.ValueChanged
@@ -26,7 +27,7 @@ Public Class DEMANDA
             Dim texto_estimativa = "Total de "
             Dim pares = PCP_QUANT_PE.Value / 2
             texto_estimativa.Append(pares & If(pares = 1, " par ", " pares "))
-            Label8.Text = New TimeMachine(PCP_DH_ENTRADA.Value, datafinal).ToTimeElapsedString
+            Label8.Text = New TimeFlow(PCP_DH_ENTRADA.Value, datafinal).ToTimeElapsedString
             LABEL_ESTIMATIVA.Text = texto_estimativa.AdjustWhiteSpaces
         End If
     End Sub

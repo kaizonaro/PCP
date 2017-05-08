@@ -13,7 +13,7 @@ Public Class LOGIN
     Sub FazerLogin()
         If USU_EMAIL.Text.IsNotBlank And USU_EMAIL.Text.IsEmail Then
             If USU_SENHA.Text.IsNotBlank Then
-                Dim Reader As MySqlDataReader = Banco.RunSQL("SELECT * FROM Usuario where USU_EMAIL = " & USU_EMAIL.Text.IsNull & " and USU_SENHA =  " & USU_SENHA.Text.ToMD5String.IsNull)
+                Dim Reader As DataBase.Reader = Banco.RunSQL("SELECT * FROM Usuario where USU_EMAIL = " & USU_EMAIL.Text.IsNull & " and USU_SENHA =  " & USU_SENHA.Text.ToMD5String.IsNull)
                 If Reader.HasRows Then
                     While Reader.Read
                         USUARIO.USU_NOME = Reader("USU_NOME")

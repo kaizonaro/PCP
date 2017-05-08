@@ -24,7 +24,7 @@ Public Class HOME
     Sub AtualizarDemandas()
         grade_demandas.Rows.Clear()
         Timer1.Stop()
-        Dim Reader As MySqlDataReader = Banco.RunSQL("SELECT * FROM Demanda as D inner join Maquina as M on M.MAQ_ID = D.MAQ_ID inner join Malha as P on P.MAL_ID = D.MAL_ID inner join Modelo as A on A.MOD_ID = D.MOD_ID inner join Cliente as C on C.CLI_ID = D.CLI_ID order by PCP_STATUS, PCP_PRIORIDADE ASC, D.MAL_ID, PCP_DH_SAIDA")
+        Dim Reader As DataBase.Reader = Banco.RunSQL("SELECT * FROM Demanda as D inner join Maquina as M on M.MAQ_ID = D.MAQ_ID inner join Malha as P on P.MAL_ID = D.MAL_ID inner join Modelo as A on A.MOD_ID = D.MOD_ID inner join Cliente as C on C.CLI_ID = D.CLI_ID order by PCP_STATUS, PCP_PRIORIDADE ASC, D.MAL_ID, PCP_DH_SAIDA")
         While Reader.Read
             Dim saida = Convert.ToDateTime(Reader("PCP_DH_SAIDA"))
             Dim entrada = Convert.ToDateTime(Reader("PCP_DH_ENTRADA"))
@@ -105,7 +105,7 @@ Public Class HOME
         If e.Button = MouseButtons.Right And grade_demandas.CurrentRow.Frozen = False Then
             Dim coluna As String = grade_demandas.CurrentCell.OwningColumn.Name
             Dim ID_DEMANDA As Integer = grade_demandas.CurrentRow.Cells("PCP_ID").Value
-            Dim reader As MySqlDataReader = Banco.RunSQL("SELECT * from Demanda  where PCP_ID =  " & ID_DEMANDA.ToString.IsNull)
+            Dim reader As DataBase.Reader = Banco.RunSQL("SELECT * from Demanda  where PCP_ID =  " & ID_DEMANDA.ToString.IsNull)
             reader.Read()
             Select Case coluna
                 Case "PCP_DH_SAIDA", "PCP_DH_ENTRADA"
@@ -219,10 +219,21 @@ Public Class HOME
     Private Sub cadmaquina_Click(sender As Object, e As EventArgs) Handles cadmaquina.Click
         Dim formi As New MAQUINA()
         formi.MAQ_ID = 0
-
         AddHandler formi.FormClosed, AddressOf AddMaquinas
         formi.ShowDialog()
     End Sub
 
+    Private Sub grade_demandas_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles grade_demandas.MouseDoubleClick
 
+    End Sub
+
+    Private Sub TabControl1_TabIndexChanged(sender As Object, e As EventArgs) Handles TabControl1.SelectedIndexChanged
+        Select Case TabControl1.SelectedIndex
+            Case GAL_TAB.TabIndex
+                TrazGaleria(FlowLayoutPanel1)
+            Case Else
+                AtualizarDemandas()
+        End Select
+
+    End Sub
 End Class

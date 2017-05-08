@@ -62,19 +62,23 @@ Partial Class HOME
         Me.cadmaquina = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.malmodbt = New System.Windows.Forms.ToolStripMenuItem()
+        Me.GAL_TAB = New System.Windows.Forms.TabPage()
+        Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.DataGridViewProgressColumn1 = New InnerLibs.DataGridViewProgressColumn()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.TabControl1.SuspendLayout()
         Me.PCP_TAB.SuspendLayout()
         CType(Me.grade_demandas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
+        Me.GAL_TAB.SuspendLayout()
         Me.SuspendLayout()
         '
         'TabControl1
         '
         Me.TabControl1.Controls.Add(Me.PCP_TAB)
+        Me.TabControl1.Controls.Add(Me.GAL_TAB)
         Me.TabControl1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TabControl1.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TabControl1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TabControl1.Location = New System.Drawing.Point(0, 0)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
@@ -86,10 +90,10 @@ Partial Class HOME
         '
         Me.PCP_TAB.Controls.Add(Me.grade_demandas)
         Me.PCP_TAB.Controls.Add(Me.MenuStrip1)
-        Me.PCP_TAB.Location = New System.Drawing.Point(4, 24)
+        Me.PCP_TAB.Location = New System.Drawing.Point(4, 25)
         Me.PCP_TAB.Name = "PCP_TAB"
         Me.PCP_TAB.Padding = New System.Windows.Forms.Padding(3)
-        Me.PCP_TAB.Size = New System.Drawing.Size(885, 418)
+        Me.PCP_TAB.Size = New System.Drawing.Size(885, 417)
         Me.PCP_TAB.TabIndex = 0
         Me.PCP_TAB.Text = "CRONOGRAMA"
         Me.PCP_TAB.UseVisualStyleBackColor = True
@@ -105,7 +109,7 @@ Partial Class HOME
         Me.grade_demandas.Location = New System.Drawing.Point(3, 27)
         Me.grade_demandas.Name = "grade_demandas"
         Me.grade_demandas.ReadOnly = True
-        Me.grade_demandas.Size = New System.Drawing.Size(879, 388)
+        Me.grade_demandas.Size = New System.Drawing.Size(879, 387)
         Me.grade_demandas.TabIndex = 2
         '
         'PCP_ID
@@ -224,33 +228,33 @@ Partial Class HOME
         '
         Me.ToolStripMenuItem3.Image = Global.InnerSocks.My.Resources.Resources.Create_New_100px
         Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
-        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(152, 22)
+        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(150, 22)
         Me.ToolStripMenuItem3.Text = "Editar Perfil"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(149, 6)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(147, 6)
         '
         'menuusuarios
         '
         Me.menuusuarios.Image = Global.InnerSocks.My.Resources.Resources.User_100px
         Me.menuusuarios.Name = "menuusuarios"
-        Me.menuusuarios.Size = New System.Drawing.Size(152, 22)
+        Me.menuusuarios.Size = New System.Drawing.Size(150, 22)
         Me.menuusuarios.Text = "Editar Usuário"
         '
         'TrocarUsuárioToolStripMenuItem
         '
         Me.TrocarUsuárioToolStripMenuItem.Image = Global.InnerSocks.My.Resources.Resources.Change_User_Male_100px
         Me.TrocarUsuárioToolStripMenuItem.Name = "TrocarUsuárioToolStripMenuItem"
-        Me.TrocarUsuárioToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.TrocarUsuárioToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
         Me.TrocarUsuárioToolStripMenuItem.Text = "Trocar Usuário"
         '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Image = Global.InnerSocks.My.Resources.Resources.Add_User_Male_100px
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(150, 22)
         Me.ToolStripMenuItem1.Text = "Novo Usuário"
         '
         'menuclientes
@@ -352,6 +356,27 @@ Partial Class HOME
         Me.malmodbt.Size = New System.Drawing.Size(131, 20)
         Me.malmodbt.Text = "Malhas e Modelos"
         '
+        'GAL_TAB
+        '
+        Me.GAL_TAB.Controls.Add(Me.FlowLayoutPanel1)
+        Me.GAL_TAB.Location = New System.Drawing.Point(4, 25)
+        Me.GAL_TAB.Name = "GAL_TAB"
+        Me.GAL_TAB.Padding = New System.Windows.Forms.Padding(3)
+        Me.GAL_TAB.Size = New System.Drawing.Size(885, 417)
+        Me.GAL_TAB.TabIndex = 1
+        Me.GAL_TAB.Text = "GALERIA"
+        Me.GAL_TAB.UseVisualStyleBackColor = True
+        '
+        'FlowLayoutPanel1
+        '
+        Me.FlowLayoutPanel1.AutoScroll = True
+        Me.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(3, 3)
+        Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(879, 411)
+        Me.FlowLayoutPanel1.TabIndex = 0
+        Me.FlowLayoutPanel1.WrapContents = False
+        '
         'DataGridViewProgressColumn1
         '
         Me.DataGridViewProgressColumn1.HeaderText = "Andamento"
@@ -378,6 +403,7 @@ Partial Class HOME
         CType(Me.grade_demandas, System.ComponentModel.ISupportInitialize).EndInit()
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
+        Me.GAL_TAB.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -423,4 +449,6 @@ Partial Class HOME
     Friend WithEvents ToolStripSeparator4 As ToolStripSeparator
     Friend WithEvents ToolStripMenuItem3 As ToolStripMenuItem
     Friend WithEvents menuusuarios As ToolStripMenuItem
+    Friend WithEvents GAL_TAB As TabPage
+    Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
 End Class
